@@ -2,18 +2,26 @@ import { Meteor } from 'meteor/meteor';
 import React, { PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 
 import App from '../layouts/App.jsx';
 import Theme from '../Theme/Theme.jsx';
 
-class AppContainer extends React.Component {
-  render () {
-    return(
-      <MuiThemeProvider muiTheme={Theme}>
-        <App />
-      </MuiThemeProvider>
-    );
+
+const mapStateToProps = (state) => {
+	return state.title
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMount: (title) => {
+      dispatch(changeTitle(title))
+    }
   }
 }
+
+
+const AppContainer = connect(
+  mapStateToProps)(App)
 
 export default AppContainer;

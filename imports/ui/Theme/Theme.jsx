@@ -1,4 +1,4 @@
-import {pink500, yellow500, lightBlack, grey100, grey500, grey700, white, grey300, darkBlack, pink100} from 'material-ui/styles/colors';
+import {cyan500,pink500, yellow500, lightBlack, grey100, grey500, grey700, white, grey300, darkBlack, pink100} from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 

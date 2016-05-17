@@ -23,8 +23,7 @@ class NewGame extends React.Component {
     return(
       <div style={styles.root}>
         {Players.map((player,i)=>{
-          return <NewPlayer key={i} name={player}/>
-        })}
+          return <NewPlayer key={i} player={player}/> })}
         <FloatingActionButton style={styles.send}>
           <ContentSend />
         </FloatingActionButton>

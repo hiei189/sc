@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import {ADD_PLAYER,FINISH_GAME,UPDATE_SCORE,START_GAME,CHANGE_TITLE} from './actions.jsx'
 
 function updateScore(state = {}, action) {
   //player, score
@@ -11,19 +12,15 @@ function updateScore(state = {}, action) {
   }
 }
 
-function startGame(state = 'Score', action) {
+const initialState = {
+  title: 'Score',
+  players: ['','','','']
+}
+
+const title = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_TITLE:
       return action.title
-    default:
-      return state
-  }
-}
-
-function changeTitle(state=,action){
-  switch (action.type) {
-    case START_GAME:
-      return action.player
     default:
       return state
   }
@@ -74,8 +71,7 @@ function todoApp(state = {}, action) {
 
 
 const rootReducer = combineReducers({
-  visibilityFilter,
-  todos
+  title
 })
 
 

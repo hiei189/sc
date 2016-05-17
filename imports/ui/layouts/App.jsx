@@ -8,7 +8,7 @@ class App extends React.Component {
   render () {
    return(
      <div>
-       <AppBar />
+       <AppBar title = {this.props.title} />
        {this.props.children}
      </div>
    );
