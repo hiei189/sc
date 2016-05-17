@@ -33,8 +33,8 @@ const Record = ({users}) => {
     <div>
       <div style = {styles.root}>
         {
-          users.map((user)=>{
-            return <UserRecord user = {user}/>
+          users.map((user,i)=>{
+            return <UserRecord key={i} user = {user}/>
           })
         }
       </div>

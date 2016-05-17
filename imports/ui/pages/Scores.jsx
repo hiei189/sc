@@ -1,5 +1,21 @@
 import React, { PropTypes } from 'react';
 import UserScore from '../components/UserScore.jsx';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh';
+
+const styles = {
+  root: {
+    display: 'flex',
+    width: '100%',
+    flexDirection: 'column',
+  },
+  refresh:{
+    position:'absolute',
+    right: 20,
+    bottom: 20
+  }
+}
+
 
 const Scores = ({users}) => {
   users =
@@ -17,12 +33,17 @@ const Scores = ({users}) => {
     ];
   console.log('Scores');
   return (
-    <div style = {styles.root}>
-      {
-        users.map((user)=>{
-          return <UserScore key = {user.id} name = {user.name} score = {user.score}/>
-        })
-      }
+    <div>
+      <div style = {styles.root}>
+        {
+          users.map((user,i)=>{
+            return <UserScore key = {i} name = {user.name} score = {user.score}/>
+          })
+        }
+      </div>
+      <FloatingActionButton style={styles.refresh}>
+        <NavigationRefresh />
+      </FloatingActionButton>
     </div>
   )
 }

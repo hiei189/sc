@@ -1,13 +1,34 @@
 import { combineReducers } from 'redux'
 
-function visibilityFilter(state = SHOW_ALL, action) {
+function updateScore(state = {}, action) {
+  //player, score
   switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter
+    case UPDATE_SCORE:
+      return {
+      }
     default:
       return state
   }
 }
+
+function startGame(state = 'Score', action) {
+  switch (action.type) {
+    case CHANGE_TITLE:
+      return action.title
+    default:
+      return state
+  }
+}
+
+function changeTitle(state=,action){
+  switch (action.type) {
+    case START_GAME:
+      return action.player
+    default:
+      return state
+  }
+}
+
 
 
 function todos(state = [], action) {
