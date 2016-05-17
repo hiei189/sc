@@ -10,9 +10,12 @@ import App from '../../ui/layouts/App.jsx';
 import AppContainer from '../../ui/containers/AppContainer.jsx';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import rootReducer from '../../api/Reducers.jsx';
-let store = createStore(rootReducer);
+import createLogger from 'redux-logger';
+
+const logger = createLogger();
+let store = createStore(rootReducer,applyMiddleware(logger));
 
 export const renderRoutes = () => (
 	<Provider store={store}>

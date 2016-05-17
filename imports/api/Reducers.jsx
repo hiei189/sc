@@ -13,14 +13,12 @@ function updateScore(state = {}, action) {
 }
 
 const initialState = {
-  title: 'Score',
-  players: ['','','','']
-}
+  title: 'Score'};
 
 const title = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_TITLE:
-      return action.title
+      return Object.assign({},{title:action.title})
     default:
       return state
   }

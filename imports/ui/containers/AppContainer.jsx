@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux'
 import { connect } from 'react-redux'
-
 import App from '../layouts/App.jsx';
 import Theme from '../Theme/Theme.jsx';
 
@@ -22,6 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const AppContainer = connect(
-  mapStateToProps)(App)
+  mapStateToProps,undefined)(App)
 
 export default AppContainer;

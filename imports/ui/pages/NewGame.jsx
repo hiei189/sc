@@ -3,6 +3,9 @@ import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import NewPlayer from '../components/NewPlayer';
+import { connect } from 'react-redux';
+
+import { changeTitle } from '../../api/actions.jsx';
 
 const styles = {
   root: {
@@ -17,7 +20,23 @@ const styles = {
   }
 }
 
-class NewGame extends React.Component {
+
+const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch);
+  return {
+    onMount: (title) => {
+      dispatch(changeTitle(title))
+    }
+  }
+}
+
+
+
+
+class NewGamePresentational extends React.Component {
+  componentWillMount() {
+    this.props.onMount('Nuevo Juego');
+  }
   render () {
     const Players = ['Jugador 1', 'Jugador 2', 'Jugador 3', 'Jugador 4'];
     return(
@@ -31,5 +50,9 @@ class NewGame extends React.Component {
     );
   }
 }
+
+
+const NewGame = connect(undefined,
+  mapDispatchToProps)(NewGamePresentational)
 
 export default NewGame;
