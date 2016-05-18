@@ -3,19 +3,24 @@ import TextField from 'material-ui/TextField';
 
 const styles = {
   root: {
-    display: 'flex',
-    width: '100%',
-    flexDirection: 'row',
+    width: '80%',
+    margin:'auto'
+  },
+  textfield: {
+    width: '100%'
   }
 }
 
 const NewPlayer = ({player,...rest}) => {
   console.log(player);
   return (
-    <TextField {...rest} 
-    type={'number'} 
-    floatingLabelText = {player}
-    style = {styles.root} />
+    <div style = {styles.root}>
+      <TextField {...rest}
+      type={'string'}
+      floatingLabelText = {player}
+      style  = {styles.textfield}
+       />
+    </div>
   );
 }
 

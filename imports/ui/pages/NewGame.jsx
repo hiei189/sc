@@ -9,9 +9,7 @@ import { changeTitle } from '../../api/actions.jsx';
 
 const styles = {
   root: {
-    display: 'flex',
-    width: '100%',
-    flexDirection: 'column',
+    width: '100%'
   },
   send:{
     position:'absolute',
@@ -40,13 +38,16 @@ class NewGamePresentational extends React.Component {
   render () {
     const Players = ['Jugador 1', 'Jugador 2', 'Jugador 3', 'Jugador 4'];
     return(
-      <div style={styles.root}>
-        {Players.map((player,i)=>{
-          return <NewPlayer key={i} player={player}/> })}
+      <div>
+        <div style={styles.root}>
+          {Players.map((player,i)=>{
+            return <NewPlayer key={i} player={player}/> })}
+        </div>
         <FloatingActionButton style={styles.send}>
           <ContentSend />
         </FloatingActionButton>
       </div>
+
     );
   }
 }
