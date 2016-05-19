@@ -8,7 +8,7 @@ import Theme from '../Theme/Theme.jsx';
 
 
 const mapStateToProps = (state) => {
-	return state.title
+	return { title: state.title }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -19,8 +19,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-const AppContainer = connect(
-  mapStateToProps,undefined)(App)
+const AppContainer = connect(mapStateToProps,undefined)(App)
 
 export default AppContainer;

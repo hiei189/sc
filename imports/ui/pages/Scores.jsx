@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import UserScore from '../components/UserScore.jsx';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh';
@@ -42,7 +43,7 @@ const Scores = ({users}) => {
         }
       </div>
       <FloatingActionButton style={styles.refresh}>
-        <NavigationRefresh />
+          <NavigationRefresh />
       </FloatingActionButton>
     </div>
   )

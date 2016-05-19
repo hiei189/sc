@@ -21,5 +21,5 @@ export function startGame() {
 }
 
 export function changeTitle(title) {
-  return { type: CHANGE_TITLE,title }
+  return { type: CHANGE_TITLE, title }
 }

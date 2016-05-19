@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
+import { createFieldClass, Field, controls } from 'react-redux-form';
+import { connect } from 'react-redux';
 
 const styles = {
   root: {
@@ -11,17 +13,23 @@ const styles = {
   }
 }
 
-const NewPlayer = ({player,...rest}) => {
-  console.log(player);
+const MaterialField = createFieldClass({
+  'TextField': controls.text
+});
+
+const NewPlayer = ({player, playerNumber, ...rest}) => {
   return (
     <div style = {styles.root}>
-      <TextField {...rest}
-      type={'string'}
-      floatingLabelText = {player}
-      style  = {styles.textfield}
-       />
+      <MaterialField model = {'player.'+ (playerNumber+1).toString()}>
+        <TextField {...rest}
+          type={'string'}
+          floatingLabelText = {player}
+          style  = {styles.textfield}/>
+      </MaterialField>
     </div>
   );
 }
 
-export default NewPlayer;
+const NewPlayerContainer = connect()(NewPlayer);
+
+export default NewPlayerContainer;

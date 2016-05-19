@@ -8,19 +8,31 @@ import NewGame from '../../ui/pages/NewGame.jsx';
 import Scores from '../../ui/pages/Scores.jsx';
 import App from '../../ui/layouts/App.jsx';
 import AppContainer from '../../ui/containers/AppContainer.jsx';
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
-import rootReducer from '../../api/Reducers.jsx';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import reducers from '../../api/Reducers.jsx';
 import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 const logger = createLogger();
-let store = createStore(rootReducer,applyMiddleware(logger));
+const rMiddleware = routerMiddleware(browserHistory);
+
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    routing: routerReducer
+  }),applyMiddleware(thunk,logger,rMiddleware));
+
+
+const history = syncHistoryWithStore(browserHistory, store)
+
 
 export const renderRoutes = () => (
 	<Provider store={store}>
 		<MuiThemeProvider muiTheme={Theme}>
-	    <Router history={browserHistory}>
+	    <Router history={history}>
 	      <Route path="/" component={AppContainer}>
 	        <IndexRoute component={Record}/>
 	        <Route path="scores" component={Scores}/>

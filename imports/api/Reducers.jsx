@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import {ADD_PLAYER,FINISH_GAME,UPDATE_SCORE,START_GAME,CHANGE_TITLE} from './actions.jsx'
+import { modelReducer, formReducer } from 'react-redux-form';
 
 function updateScore(state = {}, action) {
   //player, score
@@ -12,18 +13,32 @@ function updateScore(state = {}, action) {
   }
 }
 
-const initialState = {
-  title: 'Score'};
+const initialStateTitle = 'Score';
 
-const title = (state = initialState, action) => {
+const title = (state = initialStateTitle, action) => {
+  console.log(action);
   switch (action.type) {
     case CHANGE_TITLE:
-      return Object.assign({},{title:action.title})
+      return action.title
     default:
       return state
   }
 }
 
+const initialStateGame = {
+  started: false,
+}
+
+function game(state = initialStateGame,action) {
+  switch (action.type) {
+    case START_GAME:
+        return  {...state,started:true}
+    case FINISH_GAME:
+        return  {...state,started:false}
+    default:
+      return state;
+  }
+}
 
 
 function todos(state = [], action) {
@@ -66,11 +81,20 @@ function todoApp(state = {}, action) {
   }
 }
 
+const initialPlayerState = {
+  '1': '',
+  '2': '',
+  '3': '',
+  '4': ''
+};
 
 
-const rootReducer = combineReducers({
-  title
-})
+const reducers = {
+  title,
+  player: modelReducer('player', initialPlayerState),
+  playerForm: formReducer('player', initialPlayerState),
+  game
+}
 
 
-export default rootReducer;
+export default reducers;
