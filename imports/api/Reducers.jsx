@@ -40,6 +40,17 @@ function game(state = initialStateGame,action) {
   }
 }
 
+function score(state = initialScoreState, action){
+  switch (action.type) {
+    case UPDATE_SCORE:
+      const temp = {};
+      temp[action.player] = action.score;
+      return {...state, ...temp}
+    default:
+      return state;
+  }
+}
+
 
 function todos(state = [], action) {
   switch (action.type) {
@@ -88,12 +99,22 @@ const initialPlayerState = {
   '4': ''
 };
 
+const initialScoreState = {
+  '1': 0,
+  '2': 0,
+  '3': 0,
+  '4': 0
+};
+
 
 const reducers = {
   title,
+  game,
+  score,
   player: modelReducer('player', initialPlayerState),
   playerForm: formReducer('player', initialPlayerState),
-  game
+  partialScore: modelReducer('partialScore', initialScoreState),
+  partialScoreForm: formReducer('partialScore', initialScoreState),
 }
 
 

@@ -1,8 +1,13 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import UserScore from '../components/UserScore.jsx';
+import { connect } from 'react-redux';
+
+import UserScoreContainer from '../components/UserScore.jsx';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh';
+import { Form } from 'react-redux-form';
+
+import { updateScore } from '../../api/actions.jsx';
 
 const styles = {
   root: {
@@ -17,9 +22,10 @@ const styles = {
   }
 }
 
-
-const Scores = ({users}) => {
-  users =
+class ScoresPresentational extends React.Component {
+  constructor(props){
+    super(props);
+    this.users =
     [
       {
         name: 'Jose',
@@ -32,21 +38,34 @@ const Scores = ({users}) => {
         id:40
       }
     ];
-  console.log('Scores');
-  return (
-    <div>
-      <div style = {styles.root}>
-        {
-          users.map((user,i)=>{
-            return <UserScore key = {i} name = {user.name} score = {user.score}/>
-          })
-        }
+  }
+
+  handleRefreshScore(a){
+    const { dispatch } = this.props;
+    dispatch(updateScore(1,20));
+  }
+
+  render() {
+    const users = this.users;
+    return (
+      <div>
+        <Form model = 'partialScore' onSubmit={(a)=> this.handleRefreshScore(a)}>
+          <div style = {styles.root}>
+            {
+              users.map((user,i)=>{
+                return <UserScoreContainer playerNumber={i} key = {i} name = {user.name} score = {user.score}/>
+              })
+            }
+          </div>
+          <FloatingActionButton type='submit' style={styles.refresh}>
+              <NavigationRefresh />
+          </FloatingActionButton>
+        </Form>
       </div>
-      <FloatingActionButton style={styles.refresh}>
-          <NavigationRefresh />
-      </FloatingActionButton>
-    </div>
-  )
+    );
+  }
 }
+
+const Scores = connect()(ScoresPresentational)
 
 export default Scores;

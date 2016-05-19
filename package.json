@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "is-buffer": "^1.1.3",
     "material-ui": "^0.15.0",
     "meteor-node-stubs": "^0.2.3",
     "react": "^15.0.2",

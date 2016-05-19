@@ -4,7 +4,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import NewPlayerContainer from '../components/NewPlayer';
 import { Form } from 'react-redux-form';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 
 import { connect } from 'react-redux';
 import { changeTitle, startGame } from '../../api/actions.jsx';

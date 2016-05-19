@@ -1,11 +1,11 @@
-import {cyan500,pink500, yellow500, lightBlack, grey100, grey500, grey700, white, grey300, darkBlack, pink100} from 'material-ui/styles/colors';
+import {indigo500, cyan500,pink500, yellow500, lightBlack, grey100, grey500, grey700, white, grey300, darkBlack, pink100} from 'material-ui/styles/colors';
 import {fade} from 'material-ui/utils/colorManipulator';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 Theme =  getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
   palette: {
-    primary1Color: pink500,
+    primary1Color: indigo500,
     primary2Color: yellow500,
     primary3Color: lightBlack,
     accent1Color: pink500,
